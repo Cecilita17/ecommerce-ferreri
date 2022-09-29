@@ -1,9 +1,16 @@
 .div{
-    width: 50px;
-    background-color: white ;
+    width: 70px;
+    color: white;
 }
 
-.fa-cart-shopping{
+/* .fa-cart-shopping{
     background-color:rgb(144, 144, 144) !important ;
     font-size: 30px !important;
+} */
+
+.cart {
+    fill: white;
+    width: 30px;
+    margin-right: 10px;
+
 }
