@@ -1,23 +1,20 @@
 import React from 'react'
 import './CartWidget.css'
 import cart from '../../assets/cart-shopping-solid.svg'
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { Link } from 'react-router-dom';
 
 const CartWidget = () => {
+
+  const {cdadTotal} = useContext(CartContext)
   return (
     <div className='div'> 
-      <img src={cart} alt="cart" className='cart' />
-      0
+      <Link to={`/cart`}><img src={cart} alt="cart" className='cart' /></Link>
+      {cdadTotal}
     </div>
     
   )
 }
-
-/* const CartWidget = ({icon}) => {
-  return (
-    <div className='div' >
-        <i className={icon} ></i>
-    </div>
-  )
-} */
 
 export default CartWidget

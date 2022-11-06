@@ -1,0 +1,27 @@
+.titleCheckout{
+    font-size: 56px;
+    text-align: center;
+    margin: 2rem;
+
+}
+
+.formWrapper{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #e2e4e5;
+    height: 100vh;
+}
+
+.formm{
+    background-color:white;
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+}
