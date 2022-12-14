@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { CDBFooter, CDBFooterLink, CDBBox, CDBBtn, CDBIcon } from 'cdbreact';
 import Dog from '../../assets/dog.svg'
 
@@ -53,9 +53,9 @@ export const Footer = () => {
               Productos
             </p>
             <CDBBox flex="column" style={{ cursor: 'pointer', padding: '0' }}>
-              <CDBFooterLink href="/">Windframe</CDBFooterLink>
-              <CDBFooterLink href="/">Loop</CDBFooterLink>
-              <CDBFooterLink href="/">Contrast</CDBFooterLink>
+              <CDBFooterLink href="/">Windframe </CDBFooterLink>
+              <CDBFooterLink href="/">Loop </CDBFooterLink>
+              <CDBFooterLink href="/">Contrast </CDBFooterLink>
             </CDBBox>
           </CDBBox>
         </CDBBox>
@@ -64,3 +64,13 @@ export const Footer = () => {
     </CDBFooter>
   );
 };
+
+ */
+
+import React from 'react'
+
+export const Footer = () => {
+  return (
+    <div>Footer</div>
+  )
+}

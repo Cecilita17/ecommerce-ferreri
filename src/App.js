@@ -6,14 +6,18 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import Cart from "./components/Cart/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 import Checkout from "./components/Cart/Checkout";
 import { Footer } from "./components/Footer/Footer";
+import Login
+  from "./components/Login/Login";
 
 function App() {
   return (
     <>
       <CartProvider>
         <BrowserRouter>
+        <AuthProvider>
           <NavBar />
           <Routes>
             <Route
@@ -27,9 +31,11 @@ function App() {
             />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/Login" element={<Login/>} />
           </Routes>
           <Footer />
-        </BrowserRouter>
+          </AuthProvider>
+          </BrowserRouter>
       </CartProvider>
     </>
   );
