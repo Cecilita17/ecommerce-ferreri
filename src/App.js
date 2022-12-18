@@ -8,9 +8,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 import Checkout from "./components/Cart/Checkout";
-import { Footer } from "./components/Footer/Footer";
-import Login
-  from "./components/Login/Login";
+import {Footer } from "./components/Footer/Footer";
+import  Login  from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
+import EditProfile from "./components/Profile/EditProfile";
 
 function App() {
   return (
@@ -31,7 +32,9 @@ function App() {
             />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/Login" element={<Login/>} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/edit" element={<EditProfile/>} />
           </Routes>
           <Footer />
           </AuthProvider>

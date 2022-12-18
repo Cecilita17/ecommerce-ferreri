@@ -1,11 +1,11 @@
-/* import React from 'react';
+import React from 'react';
 import { CDBFooter, CDBFooterLink, CDBBox, CDBBtn, CDBIcon } from 'cdbreact';
 import Dog from '../../assets/dog.svg'
 
 export const Footer = () => {
   return (
-    <CDBFooter className="shadow">
-      <CDBBox display="flex" flex="column" className="mx-auto py-5" style={{ width: '90%' }}>
+    <CDBFooter className="shadow" style={{backgroundColor:"white" ,height: "calc(100% - 60px)"}}>
+      <CDBBox display="flex" flex="column" className="mx-auto py-5" style={{ width: '90%', backgroundColor:"white" }}>
         <CDBBox display="flex" justifyContent="between" className="flex-wrap">
           <CDBBox>
             <a href="/" style={{textDecoration: "none"}} className="d-flex align-items-center justify-content-center pe-5 me-5 p-0 text-dark">
@@ -65,12 +65,12 @@ export const Footer = () => {
   );
 };
 
- */
 
-import React from 'react'
+
+/* import React from 'react'
 
 export const Footer = () => {
   return (
     <div>Footer</div>
   )
-}
+} */
