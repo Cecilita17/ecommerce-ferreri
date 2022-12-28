@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import {
   MDBContainer,
   MDBTabs,
@@ -14,8 +16,8 @@ import {
 from 'mdb-react-ui-kit';
 
 
-function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber, handleSubmit, login}) {
-
+function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber, handleSubmit, login, }) {
+  const {resetPw} = useContext(AuthContext)
   const [justifyActive, setJustifyActive] = useState('tab1');;
 
   const handleJustifyClick = (value) => {
@@ -75,7 +77,7 @@ function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber,
       
             <div className="d-flex justify-content-between mx-4 mb-4">
               <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-              <a href="!#">Forgot password?</a>
+              <a href="!#" onClick={resetPw}>Forgot password?</a>
             </div>
       
             <MDBBtn className="mb-4 w-100" onClick={login} >Sign in</MDBBtn>
@@ -109,9 +111,6 @@ function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber,
               <p className="text-center mt-3">or:</p>
             </div>
       
-            {/* <MDBInput wrapperClass='mb-4' label='Picture' id='form1' type='url' onChange={(e) => setPhotoURL(e.target.value)} />
-            <MDBInput wrapperClass='mb-4' label='Phone' id='form1' type='number' onChange={(e) => setPhoneNumber(e.target.value)} />
-            <MDBInput wrapperClass='mb-4' label='Name' id='form1' type='text' onChange={(e) => setDisplayName(e.target.value)} /> */}
             <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email' onChange={(e) => setEmail(e.target.value)} />
             <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'  onChange={(e) => setPassword(e.target.value)} />
       

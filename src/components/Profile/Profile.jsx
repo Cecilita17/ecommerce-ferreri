@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 export default function PersonalProfile() {
-  const { currentUser, email, displayName, photoURL, phoneNumber, firstName, lastName, country, birthday, occupation, getUsers } = useContext(AuthContext);
+  const { currentUser, email, displayName, photoURL, phoneNumber, firstName, lastName, country, birthday, occupation } = useContext(AuthContext);
    
   
   

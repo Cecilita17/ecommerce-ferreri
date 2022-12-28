@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import {
   MDBCol,
   MDBContainer,
@@ -19,6 +19,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../service/firebase";
+import "./ProfileStyles.css"
+import Trash from "../../assets/trash-icon.svg"
 
 export default function PersonalProfile() {
   const {
@@ -43,26 +45,17 @@ export default function PersonalProfile() {
     setBirthday,
     occupation,
     setOccupation,
+    upload, photo, setPhoto
   } = useContext(AuthContext);
 
   const auth = getAuth();
   const navigate = useNavigate();
 
-  /* const updateMail = () => {
-      updateEmail(auth.currentUser, { email })
-    };
-    
-    const updatePass = () => {
-        updatePassword(auth.currentUser, {password})
-    }
- */
-    
-
   const saveChanges = () => {
     currentUser &&
       updateProfile(auth.currentUser, {
         displayName: displayName,
-        photoURL: photoURL,
+        
       })
         .then(() => {
           setDoc(doc(db, "users", currentUser.uid), {
@@ -89,9 +82,14 @@ export default function PersonalProfile() {
           console.log(error);
         });
     console.log(currentUser);
+    console.log(firstName);
+    console.log(lastName);
+    
     };
     
-    
+    function handleClick() {
+      upload(photo, currentUser);
+    }
       
 
   return (
@@ -113,22 +111,39 @@ export default function PersonalProfile() {
                     backgroundColor: "lightblue",
                   }}
                 >
-                  <MDBCardImage
-                    src={photoURL}
-                    className="mt-5 mb-2"
-                    style={{ width: "120px" }}
-                    fluid
-                  />
-                  <label
-                    htmlFor=""
-                    style={{ color: "black", fontSize: "14px" }}
-                  >
-                    Upload a new picture
-                  </label>
+                  {photo && (
+                    <div style={{ display: "flex", flexDirection:"column", alignItems:"center", height:"280px"}}>
+                      <span style={{ color: "black", fontWeight: "700", fontSize:"1.1rem", marginTop:"30px" , }}>Profile Picture:</span>
+                      <MDBCardImage
+                        src={URL.createObjectURL(photo)}
+                        className="mt-4 mb-2"
+                        style={{ width: "120px" }}
+                        fluid
+                      />
+                      
+                      <button style={{ border: "none", backgroundColor: "lightblue", fontWeight: "700", }} onClick={() => setPhoto("")}>  <img src={Trash} style={{ width: "19px", }} /> </button>
+                      <button onClick={handleClick}>Upload to Firebase</button>
+
+                    </div>
+                  )}
+                  
+                  {!photo &&
+                  <div style={{ display: "flex", flexDirection:"column", justifyContent: "flex-end", height: !photo ? "160px" : "60px", color:"black", fontWeight:"600" }} >
+                    
+                  <label htmlFor="">Select a profile image:</label>
                   <input
-                    type="text"
-                    onChange={(e) => setPhotoURL(e.target.value)}
-                  />
+                    type="file"
+                    accept="image/*"
+                    name="myImage"
+                    onChange={(event) => {
+                      setPhoto(event.target.files[0]);
+                    }}   
+                      />
+                      
+                </div>
+                  }
+                  
+                  
                   <MDBTypography
                     style={{
                       marginTop: "20px",
@@ -141,9 +156,13 @@ export default function PersonalProfile() {
                   </MDBTypography>
                   <input
                     type="text"
-                    onChange={(e) => setDisplayName(e.target.value)}
+                    onChange={(e) => {
+                      setDisplayName(e.target.value)
+                      console.log(displayName);
+                    }}
                   />
                 </MDBCol>
+                
                 <MDBCol md="8">
                   <MDBCardBody className="p-4">
                     <MDBTypography style={{ fontSize: "2rem" }} tag="h6">
@@ -155,7 +174,10 @@ export default function PersonalProfile() {
                         <MDBTypography tag="h6">First name:</MDBTypography>
                         <input
                           type="text"
-                          onChange={(e) => setFirstName(e.target.value)}
+                          onChange={(e) => {
+                            setFirstName(e.target.value)
+                            console.log(firstName);
+                          }}
                         />
                       </MDBCol>
                       <MDBCol size="6" className="mb-3">
