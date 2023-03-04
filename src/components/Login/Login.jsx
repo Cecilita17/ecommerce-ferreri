@@ -14,10 +14,13 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
-  sendEmailVerification} from "firebase/auth";
+  sendEmailVerification,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,} from "firebase/auth";
 
 const Login = () => {
-  const { currentUser, email, password, displayName, photoURL, phoneNumber, setEmail, setPassword, setDisplayName, setPhotoURL, setPhoneNumber, } = useContext(AuthContext);
+  const { currentUser, email, password, displayName, photoURL, phoneNumber, setEmail, setPassword, setDisplayName, setPhotoURL, setPhoneNumber } = useContext(AuthContext);
 
   const auth = getAuth();
   const navigate = useNavigate();
@@ -61,12 +64,8 @@ const Login = () => {
         });
         console.log(error.code);
       }
-    });
-
-
-    
-    
-};
+    }); 
+  };
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -132,12 +131,15 @@ const Login = () => {
                 text: "E-mail or password are not valid",
               });
             }
-          
           });
     }
     onRegister();
-    
   };
+
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider)
+  }
 
   return (
     <div className="loginWrapper">
@@ -151,6 +153,7 @@ const Login = () => {
           setDisplayName={setDisplayName}
           handleSubmit={handleSubmit}
           login={login}
+          googleSignIn={googleSignIn}
         />
        :  <Profile email={email} displayName={displayName} photoURL={photoURL} phoneNumber={phoneNumber} password={password} setEmail={setEmail} />
       } 

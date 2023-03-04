@@ -8,37 +8,44 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 import Checkout from "./components/Cart/Checkout";
-import {Footer } from "./components/Footer/Footer";
-import  Login  from "./components/Login/Login";
+import { Footer } from "./components/Footer/Footer";
+import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import EditProfile from "./components/Profile/EditProfile";
+import AdminPanel from "./components/AdminPanel/AdminPanel";
+import EditProducts from "./components/AdminPanel/EditProducts";
 
 function App() {
   return (
     <>
       <CartProvider>
         <BrowserRouter>
-        <AuthProvider>
-          <NavBar />
-          <Routes>
-            <Route
-              path="/"
-              element={<ItemListContainer greeting={"Bienvenidos"} />}
-            />
-            <Route path="/item/:productId" element={<ItemDetailContainer />} />
-            <Route
-              path="/category/:categoryId"
-              element={<ItemListContainer />}
-            />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
+          <AuthProvider>
+            <NavBar />
+            <Routes>
+              <Route
+                path="/"
+                element={<ItemListContainer greeting={"Bienvenidos"} />}
+              />
+              <Route
+                path="/item/:productId"
+                element={<ItemDetailContainer />}
+              />
+              <Route
+                path="/category/:categoryId"
+                element={<ItemListContainer />}
+              />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/edit" element={<EditProfile/>} />
-          </Routes>
-          <Footer />
+              <Route path="/admin" element={<AdminPanel />} />
+              <Route path="/edit" element={<EditProfile />} />
+              <Route path="/editprod" element={<EditProducts />} />
+            </Routes>
+            <Footer />
           </AuthProvider>
-          </BrowserRouter>
+        </BrowserRouter>
       </CartProvider>
     </>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { CDBFooter, CDBFooterLink, CDBBox, CDBBtn, CDBIcon } from 'cdbreact';
 import Dog from '../../assets/dog.svg'
 
@@ -63,14 +63,51 @@ export const Footer = () => {
       </CDBBox>
     </CDBFooter>
   );
-};
+}; */
 
 
-
-/* import React from 'react'
+import React from 'react';
+import './Footer.css';
 
 export const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-} */
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-col">
+          <h4>Contact Us</h4>
+          <p>123 Main St</p>
+          <p>Anytown, USA</p>
+          <p>555-555-5555</p>
+          <p>info@yourcompany.com</p>
+        </div>
+        <div className="footer-col">
+          <h4>About Us</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna id convallis aliquam, ipsum ipsum bibendum est, a malesuada magna libero id libero.</p>
+        </div>
+        <div className="footer-col">
+          <h4>Follow Us</h4>
+          <div className="social-icons">
+            <a href="#">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <div className="footer-logo">
+            <img src={require('https://picsum.photos/seed/picsum/200/300')} alt="Logo" />
+          </div>
+        </div>
+      </div>
+      <p className="copyright">Copyright © Your Company {new Date().getFullYear()}</p>
+    </footer>
+  );
+};
+
+export default Footer;

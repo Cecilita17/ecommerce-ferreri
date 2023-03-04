@@ -1,8 +1,9 @@
 import React from "react";
 import FormCheckout from "../FormCheckout/FormCheckout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { AuthContext } from "../../context/AuthContext";
 import {
   collection,
   getDocs,
@@ -12,31 +13,55 @@ import {
   documentId,
   addDoc,
 } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { db } from "../../service/firebase/index";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Login from "../Login/Login";
 
 const Checkout = () => {
+  const { cart, cdadTotal, clearCart,  } = useContext(CartContext);
+  const {  firstName, phoneNumber, currentUser } = useContext(AuthContext);
+  
   const [datosCompra, setDatosCompra] = useState({});
   const [personalData, setPersonalData] = useState(false);
+  const [sale, setSale] = useState({});
+  
+  const auth = getAuth();
+  const user = auth.currentUser;
+  console.log(currentUser);
 
+  const orderEmail = currentUser.email
   const information = (name, phone, email) => {
-    setDatosCompra({ name, phone, email });
+    setDatosCompra({ firstName, phoneNumber, orderEmail });
     setPersonalData(true);
   };
 
-  const { cart, cdadTotal, clearCart } = useContext(CartContext);
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setSale(cart)
+  }, [cart])
+  
 
   const createOrder = async () => {
     try {
+      // Upload sale to database
+      
+      try {
+        if(user){
+          await addDoc(collection(db, 'sales', user.uid, 'purchases'), {sale});
+        }
+      } catch (error) {
+        console.error("Error adding sale: ", error);
+      }
+
       const objOrder = {
         buyer: datosCompra,
         items: cart,
         total: cdadTotal,
       };
-
+      
       const batch = writeBatch(db);
 
       const outOfStock = [];
@@ -67,6 +92,10 @@ const Checkout = () => {
         }
       });
 
+      
+
+
+
       if (outOfStock.length === 0) {
         await batch.commit()
 
@@ -95,16 +124,21 @@ const Checkout = () => {
     }
   };
 
+  
+  
+
   return (
     <div className="formWrapper">
       <div className="titleCheckout" >Checkout </div>
       
-      {personalData ? (
-        <button style={{border:"none", borderRadius:"3px", width:"300px",  backgroundColor:"#1c71ff", color:"white", height:"40px"}} onClick={createOrder}>
-          Finalizar compra
-        </button>
+      {personalData !== null ? (
+        <div style={{ height: "300px" }}>
+          <button style={{border:"none", borderRadius:"3px", width:"300px",  backgroundColor:"#1c71ff", color:"white", height:"40px"}} onClick={createOrder} >
+            Finalizar compra
+          </button>
+        </div>
       ) : (
-        <FormCheckout information={information} />
+        <Login information={information} />
       )}
     </div>
   );

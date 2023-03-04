@@ -11,9 +11,9 @@ const ItemListContainer = (props) => {
   useEffect(() => {
     /*  const collectionRef = collection(db, 'products') */
 
-    const collectionRef = categoryId
-      ? query(collection(db, "products"), where("category", "==", categoryId))
-      : collection(db, "products");
+    const collectionRef =
+      categoryId ?
+      query(collection(db, "products"), where("category", "==", categoryId)) : collection(db, "products");
 
     getDocs(collectionRef).then((res) => {
       const productsAdapted = res.docs.map((doc) => {

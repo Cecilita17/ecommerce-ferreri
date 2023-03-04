@@ -16,7 +16,7 @@ import {
 from 'mdb-react-ui-kit';
 
 
-function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber, handleSubmit, login, }) {
+function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber, handleSubmit, login, googleSignIn }) {
   const {resetPw} = useContext(AuthContext)
   const [justifyActive, setJustifyActive] = useState('tab1');;
 
@@ -29,7 +29,7 @@ function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber,
   };
 
   return (
-    <div style={{ height:"100vh", backgroundColor:"#e4e5e6" }}>
+    <div style={{ height:"auto", width:"600px", backgroundColor:"white" }}>
       <MDBContainer className="p-3 py-5 d-flex flex-column w-50" >
         <MDBTabs pills justify className='mb-3 d-flex flex-row justify-content-between'>
           <MDBTabsItem>
@@ -60,8 +60,9 @@ function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber,
                   <MDBIcon fab icon='twitter' size="sm"/>
                 </MDBBtn>
       
-                <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                  <MDBIcon fab icon='google' size="sm"/>
+                <MDBBtn onClick={googleSignIn} tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+                  <MDBIcon fab icon='google' size="sm" />
+                  
                 </MDBBtn>
       
                 <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
@@ -85,10 +86,10 @@ function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber,
       
           </MDBTabsPane>
       
-          <MDBTabsPane style={{ backgroundColor:"#e4e5e6" }}  show={justifyActive === 'tab2'}>
+          <MDBTabsPane style={{ backgroundColor:"white" }}  show={justifyActive === 'tab2'}>
       
             <div  className="text-center mb-3">
-              <p>Sign un with:</p>
+              <p>Sign in with:</p>
       
               <div className='d-flex justify-content-between mx-auto' style={{width: '40%'}}>
                 <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
@@ -99,7 +100,7 @@ function App({setEmail, setPassword,setDisplayName, setPhotoURL, setPhoneNumber,
                   <MDBIcon fab icon='twitter' size="sm"/>
                 </MDBBtn>
       
-                <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
+                <MDBBtn onClick={googleSignIn} tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
                   <MDBIcon fab icon='google' size="sm"/>
                 </MDBBtn>
       

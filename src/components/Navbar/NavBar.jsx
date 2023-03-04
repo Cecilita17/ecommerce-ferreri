@@ -10,6 +10,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const NavBar = () => {
   const {currentUser, clickLogin} = useContext(AuthContext)
+  const adminUID = "I1jT2OClpeUzCgLGcbyX9SWihDm1";
 
   return (
     
@@ -22,10 +23,19 @@ const NavBar = () => {
           {currentUser && <Link to={`/profile`} style={{ textDecoration: "none" }} ><Nav.Link href="#profile">Mi perfil</Nav.Link></Link>}
           {<button className="navStyle" onClick={clickLogin}>
           {currentUser ? "Logout" : "Login"}
-        </button>}
+          </button>}
+          
           
         </Nav>
         <CartWidget icon="fa-solid fa-cart-shopping" />
+        
+        {currentUser &&
+          currentUser.uid === adminUID &&
+          <Link to={`/admin`} className="navStyle">Admin Dashboard</Link> 
+   
+          
+        }
+        
       </Container>
     </Navbar>
     

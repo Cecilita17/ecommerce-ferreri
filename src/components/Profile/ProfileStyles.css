@@ -1,0 +1,35 @@
+.height{
+    height: fit-content;
+    
+}
+
+.historyStyles{
+    background-color: #3f4143;
+    padding: 20px;
+    height: 500px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    margin: 20px;
+    scroll-behavior: auto;
+    overflow-y: scroll;
+    border: 20px solid #3f4143;
+}
+.historyStyles span{
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+    padding-bottom: 30px;
+    
+}
+.historyStyles ul{
+    background-color: #e3e4e5;
+    padding: 30px;
+    color: black;
+}
+
+.historyStyles ul span{
+    font-size: 18px;
+    color: black;
+}
