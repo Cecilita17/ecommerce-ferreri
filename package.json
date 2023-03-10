@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@firebase/util": "^1.9.3",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -12,7 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.1",
     "cdbreact": "^1.5.3",
-    "firebase": "^9.13.0",
+    "firebase": "^9.17.2",
     "mdb-react-ui-kit": "^5.0.0",
     "mdbreact": "^5.2.0",
     "react": "^18.2.0",

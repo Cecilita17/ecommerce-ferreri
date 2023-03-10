@@ -1,6 +1,11 @@
+.edit-prod-container{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+}
+
 .edit-title{
-  text-align: center;
-  margin: 30px;
   font-size: 1.8rem;
   font-weight: 700;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -16,54 +21,86 @@
   color: white;
 }
 
+.input-field{
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(117, 117, 117);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  overflow: hidden !important;
+  word-wrap: break-word !important;
+  word-break: break-all !important;
+}
+
+.input-field-stock{
+  width: 4rem;
+}
+
+
 .product-table {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: fit-content;
   margin: 30px;
+  overflow: scroll;
+  max-height: 550px;
+  overflow-y: scroll;
 }
 
 .table-row {
   display: grid;
-  grid-template-columns: 1.3fr 1.3fr 0.4fr 1fr;
+  grid-template-columns: 1.5fr 1.5fr 0.4fr 0.4fr 0.4fr 1.8fr 1fr;
   grid-template-rows: auto;
+  grid-template-areas: 
+  "title description stock price weight url actions";
   grid-column-gap: 10px;
   align-items: center;
   padding: 10px;
+  border: 0.5px solid #dedcdc;
+  
 }
 
 .table-header {
   display: grid;
-  grid-template-columns: 1.3fr 1.3fr 0.4fr 1fr;
+  grid-template-columns: 1.5fr 1.5fr 0.4fr 0.4fr 0.4fr 1.8fr 1fr;
   grid-template-rows: auto;
-  background-color: #eee;
+  grid-template-areas: 
+  "title description stock price weight url actions";
+  background-color: rgb(52, 52, 52);
+  color: rgb(196, 196, 196);
   font-weight: bold;
   align-items: center;
   padding: 10px;
 }
 
 .product-title {
-  grid-column: 1 / 2;
+  grid-area: title;
 }
 
 .product-description {
-  grid-column: 2 / 3;
+  grid-area: description;
 }
 
 .product-stock {
-  grid-column: 3 / 4;
+  grid-area: stock;
 }
 
+.product-price {
+  grid-area: price;
+}
+
+.product-weight {
+  grid-area: weight;
+}
+
+.product-url {
+  grid-area: url;
+  width: 300px;
+  word-wrap: break-word;
+}
 .product-actions {
-  grid-column: 4 / 5;
+  grid-area: actions;
 }
-
-
-
-
-
-
-
-
-
 

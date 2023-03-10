@@ -31,7 +31,7 @@ const NavBar = () => {
         
         {currentUser &&
           currentUser.uid === adminUID &&
-          <Link to={`/admin`} className="navStyle">Admin Dashboard</Link> 
+          <Link to={`/admin`} className="navStyle">Admin settings</Link> 
    
           
         }
