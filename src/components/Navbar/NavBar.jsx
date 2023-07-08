@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const NavBar = () => {
   const {currentUser, clickLogin} = useContext(AuthContext)
-  const adminUID = "I1jT2OClpeUzCgLGcbyX9SWihDm1";
+  const adminUID = "khLajZBrFuXfgKOImxaAxG670b82";
 
   return (
     

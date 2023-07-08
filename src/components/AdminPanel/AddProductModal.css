@@ -87,6 +87,23 @@
     height: 100px;
   }
 
+  
+  .input-file {
+    width: 400px !important;
+    background-color: transparent !important;
+    border: none;
+    box-shadow: none !important;
+  }
+
+  .file-img-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    width: 650px;
+    margin-left: 50px;
+  }
   .input-small-group{
     display: flex;
     flex-direction: row;

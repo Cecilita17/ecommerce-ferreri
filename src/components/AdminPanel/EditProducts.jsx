@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./EditProducts.css";
 import { db } from "../../service/firebase";
-import { getDocs, collection, doc, updateDoc } from "firebase/firestore";
+import { getDocs, collection, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import AddProductModal from "./AddProductModal";
 
 
@@ -24,7 +24,7 @@ const EditProducts = () => {
       console.log("success", productsArray);
     };
     fetchProducts();
-  }, [products]);
+  }, []);
 
   const handleEditClick = (product, index) => {
     setSelectedProduct({ ...product, index });
@@ -41,13 +41,17 @@ const EditProducts = () => {
     setEditingProductIndex(-1);
 };
 
-  const handleDelete = async (productId, index) => {
-    // Delete product from database
-    // ...
-    const newProducts = [...products];
-    newProducts.splice(index, 1);
-    setProducts(newProducts);
-  };
+const handleDelete = async (productId, index) => {
+  // Delete product from database
+  const productRef = doc(db, "products", productId);
+  await deleteDoc(productRef);
+
+  // Remove product from UI
+  const newProducts = [...products];
+  newProducts.splice(index, 1);
+  setProducts(newProducts);
+};
+
 
   const openAddProductModal = () => {
     setShowAddProductModal(true);
@@ -57,6 +61,10 @@ const EditProducts = () => {
     setShowAddProductModal(false);
   };
 
+  const handleProductAdd = (newProduct) => {
+    setProducts([...products, { ...newProduct, id: newProduct.id }]);
+  };
+  
 
   return (
     <div className="edit-prod-container" style={{fontFamily: "monserrat"}} >
@@ -68,7 +76,7 @@ const EditProducts = () => {
       </div>
 
       {showAddProductModal && (
-          <AddProductModal closeModal={closeAddProductModal}  />
+          <AddProductModal handleProductAdd={handleProductAdd} closeModal={closeAddProductModal}  />
         )}
   
       <div className="product-table">

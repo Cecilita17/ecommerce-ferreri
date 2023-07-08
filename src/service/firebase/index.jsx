@@ -3,7 +3,7 @@ import { getFirestore } from 'firebase/firestore'
 import { getAuth } from "firebase/auth";
 
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBG4LyRcUKI4P8Af066uqis6UGRnUDOhLQ",
   authDomain: "ecommerce-perros.firebaseapp.com",
   projectId: "ecommerce-perros",
@@ -15,6 +15,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app)
-
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
+
+
+
