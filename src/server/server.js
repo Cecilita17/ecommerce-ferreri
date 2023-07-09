@@ -3,7 +3,7 @@ const admin = require('firebase-admin');
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
+    credential: admin.credential.cert('./../serviceAccountKey.json'),
 });
 
 const app = express();
