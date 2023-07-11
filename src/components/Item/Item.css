@@ -1,0 +1,14 @@
+.itemStyles{
+    height: 372px;
+    width: 252px;
+    border: solid 0.5px rgb(232, 232, 232);
+}
+
+.card{
+    font-weight: 600;
+    font-size: 13px !important;
+    font-family: Nunito,-apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+    color: black;
+    border: none;
+    margin-bottom: 30px;
+}

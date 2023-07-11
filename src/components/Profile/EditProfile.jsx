@@ -65,6 +65,7 @@ export default function PersonalProfile() {
             country: country,
             birthday: birthday,
             occupation: occupation,
+            uid: currentUser.uid
           });
         })
         .then(() => {

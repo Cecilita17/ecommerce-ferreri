@@ -1,6 +1,7 @@
 /*SIDEBAR*/
 
 .admin-container {
+    height: fit-content !important;
     position: relative;
     display: grid; 
     grid-auto-flow: column dense; 

@@ -10,17 +10,17 @@ import { AuthContext } from "../../context/AuthContext";
 
 const NavBar = () => {
   const {currentUser, clickLogin} = useContext(AuthContext)
-  const adminUID = "khLajZBrFuXfgKOImxaAxG670b82";
+  const adminUID = "NfSLMpfkeGX02iWeAVlXdQn89D22";
 
   return (
     
-     <Navbar bg="dark" variant="dark">
+     <Navbar className="navbar">
       <Container>
-      <Link to={`/`} style={{textDecoration: "none"}} ><Navbar.Brand href="#home">Lorem</Navbar.Brand></Link>
+      <Link to={`/`} style={{textDecoration: "none"}} ><Navbar.Brand  style={{ color: "white" }} href="#home">Lorem</Navbar.Brand></Link>
         <Nav className="me-auto">
-          <Link to={`/category/perros`} style={{textDecoration: "none"}} ><Nav.Link href="#products">Productos</Nav.Link></Link>
-          <Link to={`/contacto`} style={{ textDecoration: "none" }} ><Nav.Link href="#contact">Contacto</Nav.Link></Link>
-          {currentUser && <Link to={`/profile`} style={{ textDecoration: "none" }} ><Nav.Link href="#profile">Mi perfil</Nav.Link></Link>}
+          <Link to={`/category/perros`} style={{ textDecoration: "none" }} ><Nav.Link href="#products" style={{ color: "white" }}>Productos</Nav.Link></Link>
+          <Link to={`/contacto`} style={{ textDecoration: "none" }} ><Nav.Link href="#contact" style={{ color: "white" }}>Contacto</Nav.Link></Link>
+          {currentUser && <Link to={`/profile`} style={{ textDecoration: "none" }} ><Nav.Link href="#profile" style={{ color: "white" }}>Mi perfil</Nav.Link></Link>}
           {<button className="navStyle" onClick={clickLogin}>
           {currentUser ? "Logout" : "Login"}
           </button>}

@@ -1,12 +1,16 @@
+const cors = require('cors');
 const express = require('express');
 const admin = require('firebase-admin');
 
 // Initialize Firebase Admin SDK
 admin.initializeApp({
-    credential: admin.credential.cert('./../serviceAccountKey.json'),
+  credential: admin.credential.cert('./../serviceAccountKey.json'),
 });
 
 const app = express();
+
+// Add CORS middleware
+app.use(cors());
 
 // Define a route to fetch the user list
 app.get('/api/users', async (req, res) => {
@@ -27,3 +31,4 @@ app.get('/api/users', async (req, res) => {
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
+
