@@ -7,6 +7,8 @@ import "./AddProductModal.css";
 const AddProductModal = ({ handleProductAdd, closeModal }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
   const [stock, setStock] = useState("");
   const [price, setPrice] = useState("");
   const [kg, setKg] = useState("");
@@ -14,6 +16,8 @@ const AddProductModal = ({ handleProductAdd, closeModal }) => {
   const [newProduct, setNewProduct] = useState({
     title,
     description,
+    category,
+    brand,
     stock,
     price,
     kg,
@@ -31,7 +35,8 @@ const AddProductModal = ({ handleProductAdd, closeModal }) => {
 
     const productRef = collection(db, "products");
     try {
-      const newProduct = { title, description, stock, price, kg, url: imageUrl };
+      const newProduct = { title, description, category,
+        brand, stock, price, kg, url: imageUrl };
       await addDoc(productRef, newProduct)
       handleProductAdd(newProduct);
     } catch (error) {
@@ -64,6 +69,30 @@ const AddProductModal = ({ handleProductAdd, closeModal }) => {
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           />
+        </div>
+
+        <div className="input-small-group" style={{display:"flex", justifyContent:"start", marginLeft:"80px", gap:"60px", color: "#555"}} >
+          <div >
+            <label htmlFor="category">Category:</label>
+            <input
+              type="text"
+              id="category"
+              placeholder="Category"
+              value={category}
+              onChange={(event) => setCategory(event.target.value)}
+            />
+          </div>
+          
+          <div >
+            <label htmlFor="brand">Brand:</label>
+            <input
+              type="text"
+              id="brand"
+              placeholder="Brand"
+              value={brand}
+              onChange={(event) => setBrand(event.target.value)}
+            />
+          </div>
         </div>
 
         <div className="input-small-group">

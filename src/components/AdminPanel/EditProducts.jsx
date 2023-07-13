@@ -83,6 +83,8 @@ const handleDelete = async (productId, index) => {
         <div className="table-header">
           <div className="product-title">Product</div>
           <div className="product-description">Description</div>
+          <div className="product-category">Category</div>
+          <div className="product-brand">Brand</div>
           <div className="product-stock">Stock</div>
           <div className="product-price">Price</div>
           <div className="product-weight">Weight</div>
@@ -119,6 +121,32 @@ const handleDelete = async (productId, index) => {
                     }
                   />
                 </div>
+                <div className="product-category">
+                  <input
+                    className="input-field"
+                    type="text"
+                    value={selectedProduct.category}
+                    onChange={(e) =>
+                      setSelectedProduct({
+                        ...selectedProduct,
+                        category: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="product-brand">
+                  <input
+                    className="input-field"
+                    type="text"
+                    value={selectedProduct.brand}
+                    onChange={(e) =>
+                      setSelectedProduct({
+                        ...selectedProduct,
+                        brand: e.target.value,
+                      })
+                    }
+                  />
+                </div>
                 <div className="product-stock">
                   <input
                     className="input-field"
@@ -148,8 +176,8 @@ const handleDelete = async (productId, index) => {
                 <div className="product-weight">
                   <input
                     className="input-field"
-                    type="number"
-                    value={selectedProduct.kg}
+                    type="text"
+                    value={selectedProduct.kg }
                     onChange={(e) =>
                       setSelectedProduct({
                         ...selectedProduct,
@@ -184,7 +212,9 @@ const handleDelete = async (productId, index) => {
             ) : (
               <>
                 <div className="product-title">{product.title}</div>
-                <div className="product-description">{product.description}</div>
+                  <div className="product-description">{product.description}</div>
+                  <div className="product-category">{product.category}</div>
+                  <div className="product-brand">{product.brand}</div>
                   <div className="product-stock">{product.stock}</div>
                   <div className="product-price">{product.price}</div>
                   <div className="product-kg">{product.kg}</div>
